@@ -52,7 +52,7 @@
  *	Return 0 after filling in @nr_tokens and @tokens[] properly
  *
  */
-int parse_command(char *command, int *nr_tokens, char *tokens[])
+static int parse_command(char *command, int *nr_tokens, char *tokens[])
 {
 	/* TODO
 	 * Followings are example code. You should delete them and implement 
