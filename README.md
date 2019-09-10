@@ -1,42 +1,41 @@
-# SCE212 Computer Organization and Architecture (Fall 2019)
+# SCE213 Operating Systems (Fall 2019)
 
-## Project #0: Implementing a Command Parser
+## Project #0: Implementing a Command Line Parser
 
-### Due on 11:59:59pm, September 18 (Wednesday)
+### Due on 11:59:59pm, September 20 (Friday)
 
 
 ### Introduction
 
-The purpose of this project is to bootstrap the term project to implement MIPS simulator, and to get familiar with our project assignment submission system.
+The purpose of this project is to bootstrap the term project of implementing a shell program, and to get familiar with our project assignment submission system.
 
 
 ### Problem Specification
 
-We will implement a MIPS instruction simulator throughout the class. To that end, you should firstly make the simulator to understand user inputs and commands.
+We will implement a shell program soon. To that end, you should firstly make the shell program to understand user inputs and commands.
 
 In this project, the framework passes input strings, and your task is to **split the input strings into command tokens**. A string is defined as a sequence of characters which is terminated with `\0`.  A command token is defined as a sequence of characters without whitespaces, where the whitespaces include spaces(' ') and tab characters('`\t`').
 
-For example, if the input string is " Hello   world ", the command tokes are "Hello" and "world". **Note that the tokens do not include any space characters**. Another example is for an input string "add   t0   t1   t2"; it should be broken into "add", "t0", "t1", and "t2".
+For example, if the input string is " Hello   world ", the command tokes are "Hello" and "world". **Note that the tokens do not include any space characters**. Another example is for an input string " cp   a.out  pa0.c /tmp "; it should be broken into "cp", "a.out", "pa0.c", and "/tmp".
 
 This feature should be implemented in `parse_command()` function. The user input is passed through `command`. After parsing `command` into tokens, the tokens should be assigned to `tokens[]` in order, which is passed as the argument of the `parse_command()` function. Also, the number of tokens should be assigined to `*nr_tokens` which will be used by the framework.
 
-Below diagram illustrates a correct result for an input string "  add t0  t1  t2  ". Note that each token is also a string which is terminated with `\0`.
+Below diagram illustrates a correct result for an input string "  ls  -al   /home/sanghoon ". Note that each token is also a string which is terminated with `\0`.
 
 ```c
-char *command   --> "  add t0  t1  t2  "
+char *command   --> "  ls  -al   /home/sanghoon "
  
-*nr_tokens = 4
-tokens[0]  -->  "add"
-tokens[1]  -->  "t0"
-tokens[2]  -->  "t1"
-tokens[3]  -->  "t2"
-tokens[4]... = NULL
+*nr_tokens = 3
+tokens[0]  -->  "ls"
+tokens[1]  -->  "-al"
+tokens[2]  -->  "/home/sanghoon"
+tokens[3]... = NULL
 ```
 
 
 ### Skeleton Code
 
-You can start this program assignment by cloning this repository at https://github.com/sslab-ajou/sce212-pa0-2019f. Everything is in `pa0.c`. Please do not modify the `main()` function, but implement your code in `parse_command()` function.
+You can start this program assignment by cloning this repository at https://github.com/sslab-ajou/sce213-pa0-2019f. Everything is in `pa0.c`. Please do not modify the `main()` function, but implement your code in `parse_command()` function.
 
 All submission and grading are done automatically through https://sslab.ajou.ac.kr/pasubmit. Please follow the instruction explained in the class. Note that `input` file in the provided code contains the input sequence for the grading.
 
@@ -53,6 +52,7 @@ All submission and grading are done automatically through https://sslab.ajou.ac.
 - You can use **up to 4 slip tokens throughout this semester**.
 - This is an OS/architecture-independent project; you may use Visual Studio on Windows or vim/gcc on Linux. However, the grading will be done on a Linux machine. So, write code as neutral as possible to compilers.
 - Submit only the pa0.c file to the submission server at https://sslab.ajou.ac.kr/pasubmit.
+- Report 
 
 
 ### Tips and Notes

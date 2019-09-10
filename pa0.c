@@ -39,13 +39,13 @@
  *   tokens[3] = "University!!"
  *
  * Another exmaple is;
- *   command = "  add r0   r1 r2 "
+ *   command = "ls  -al   /home/sanghoon /etc  "
  *
  * then, nr_tokens = 4, and tokens is
- *   tokens[0] = "add"
- *   tokens[1] = "r0"
- *   tokens[2] = "r1"
- *   tokens[3] = "r2"
+ *   tokens[0] = "ls"
+ *   tokens[1] = "-al"
+ *   tokens[2] = "/home/sanghoon"
+ *   tokens[3] = "/etc"
  *
  *
  * RETURN VALUE

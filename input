@@ -1,4 +1,4 @@
 hello world
- add t0 t1 t2
-  sub   s2	s1   s0  
+ cp /home/os/2018    /home/os/2019  
+	tar -czf my.tar.gz a.c b.c  c.c  d.c  mylongcharacter.c Makefile      whatthe.c   
 		this	string contains	multiple	tabs		
