@@ -59,9 +59,26 @@ static int parse_command(char *command, int *nr_tokens, char *tokens[])
 	 * Followings are example code. You should delete them and implement 
 	 * your own code here
 	 */
-	tokens[0] = "hello";
-	tokens[1] = "world";
-	*nr_tokens = 2;
+	char buf = '\0';
+    int i = 0;
+
+    for(i = 0; i<MAX_COMMAND; i++)
+    {
+        buf = command[i];
+
+        if(buf == ' ')
+            continue;
+        else if(buf == '\t')
+            continue;
+        else if(buf == '\n')
+            break;
+        else{
+            
+            *nr_tokens+=1;
+            printf("%d : %s\n", *nr_tokens, command[i]);
+            tokens[*nr_tokens-1] = command[i];
+        }
+    }
 
 	return 0;
 }
@@ -74,7 +91,7 @@ int main(int argc, const char *argv[])
 {
 	char line[MAX_COMMAND] = { '\0' };
 	FILE *input = stdin;
-
+    int i;
 	if (argc == 2) {
 		input = fopen(argv[1], "r");
 		if (!input) {
@@ -86,11 +103,11 @@ int main(int argc, const char *argv[])
 	while (fgets(line, sizeof(line), input)) {
 		char *tokens[MAX_NR_TOKENS] = { NULL };
 		int nr_tokens= 0;
-
-		parse_command(line, &nr_tokens, tokens);
-
-		fprintf(stderr, "nr_tokens = %d\n", nr_tokens);
-		for (int i = 0; i < nr_tokens; i++) {
+   
+        int i;
+        parse_command(line, &nr_tokens, tokens);
+    	fprintf(stderr, "nr_tokens = %d\n", nr_tokens);
+		for (i = 0; i < nr_tokens; i++) {
 			fprintf(stderr, "tokens[%d] = %s\n", i, tokens[i]);
 		}
 		printf("\n");
